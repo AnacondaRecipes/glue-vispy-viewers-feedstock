@@ -21,7 +21,7 @@ requirements:
 
   run:
     - python
-    - numpy
+    - numpy >=1.9
     - pyopengl
     - glue-core >=0.12
     - matplotlib
