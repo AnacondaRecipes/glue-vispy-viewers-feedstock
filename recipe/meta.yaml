@@ -36,9 +36,11 @@ test:
     - glue_vispy_viewers.volume
 
 about:
-  home: https://github.com/glue-viz/glue-vispy-viewers
+  home:  http://glueviz.org
   license: BSD 3-Clause
   summary: 3D viewers for Glue
+  dev_url: https://github.com/glue-viz/glue-vispy-viewers
+  doc_url: http://glueviz.org/en/stable/gui_guide/3d_viewers.html
 
 extra:
   recipe-maintainers:
