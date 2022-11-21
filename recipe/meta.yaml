@@ -20,6 +20,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
+    - wheel
 
   run:
     - python
@@ -39,14 +40,25 @@ test:
     - glue_vispy_viewers
     - glue_vispy_viewers.scatter
     - glue_vispy_viewers.volume
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home:  http://glueviz.org
+  home:  https://glueviz.org
   license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
   summary: 3D viewers for Glue
+  description: 3D viewers for Glue using VisPy
   dev_url: https://github.com/glue-viz/glue-vispy-viewers
-  doc_url: http://glueviz.org/en/stable/gui_guide/3d_viewers.html
+  doc_url: https://glueviz.org/en/stable/gui_guide/3d_viewers.html
 
 extra:
   recipe-maintainers:
     - astrofrog-conda-forge
+  skip-lints:
+    - missing_doc_source_url
+    - missing_license_url
+    - gui_app
