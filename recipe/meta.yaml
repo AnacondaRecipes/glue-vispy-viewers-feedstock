@@ -11,7 +11,8 @@ source:
 
 build:
   number: 0
-  skip: True  # [py<37 or ppc64le or s390x]
+  # Skipping unnecessary linux platforms that don't need viz.
+  skip: True  # [py<36 or ppc64le or s390x]
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
