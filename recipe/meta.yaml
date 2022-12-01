@@ -24,7 +24,7 @@ requirements:
 
   run:
     - python
-    - numpy >=1.17
+    - numpy
     - pyopengl
     - glue-core >=1.0
     - matplotlib-base
@@ -47,7 +47,7 @@ test:
 
 about:
   home:  https://glueviz.org
-  license: BSD-3-Clause
+  license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
   summary: 3D viewers for Glue
