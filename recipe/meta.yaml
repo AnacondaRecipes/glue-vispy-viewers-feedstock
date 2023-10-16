@@ -16,13 +16,12 @@ build:
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
-
   host:
     - python
     - setuptools
     - setuptools_scm
     - wheel
-
+    - pip
   run:
     - python
     - numpy
