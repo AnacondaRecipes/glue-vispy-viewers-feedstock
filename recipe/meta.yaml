@@ -1,4 +1,4 @@
-{% set version = "1.0.5" %}
+{% set version = "1.2.3" %}
 
 package:
   name: glue-vispy-viewers
@@ -6,13 +6,13 @@ package:
 
 source:
   fn: glue-vispy-viewers-{{version}}.tar.gz
-  url: https://pypi.io/packages/source/g/glue-vispy-viewers/glue-vispy-viewers-{{version}}.tar.gz
-  sha256: 9d126735b1c1b08a56e02e11d0eba20c040ff934c8d1fd6644e7ee085a420569
+  url: https://pypi.org/packages/source/g/glue-vispy-viewers/glue_vispy_viewers-1.2.3.tar.gz
+  sha256: 72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545
 
 build:
-  number: 1
+  number: 0
   # Skipping unnecessary linux platforms that don't need viz.
-  skip: True  # [py<36 or ppc64le or s390x]
+  skip: true  # [py<36 or ppc64le or s390x]
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -22,18 +22,25 @@ requirements:
     - setuptools_scm
     - wheel
     - pip
+    - setuptools-scm
   run:
     - python
     - numpy
     - pyopengl
-    - glue-core >=1.0
+    - glue-core >=1.13.1
     - matplotlib-base
     - qtpy
     - scipy
     - astropy >=4.0
     - pillow
-    - vispy >=0.6
+    - vispy >=0.12.0
     - pyqt >=5.9,<6.0a0
+    - echo >=0.6
+    - importlib-metadata >=3.6  # [py<310]
+    - glfw
+    - imageio
+  run_constrained:
+    - glue-qt >=0.1.0
 
 test:
   imports:
@@ -46,7 +53,7 @@ test:
     - pip
 
 about:
-  home:  https://glueviz.org
+  home: https://glueviz.org
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
