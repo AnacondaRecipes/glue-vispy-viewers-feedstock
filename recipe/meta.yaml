@@ -1,49 +1,45 @@
-{% set version = "1.0.5" %}
+{% set name = "glue-vispy-viewers" %}
+{% set version = "1.2.3" %}
 
 package:
-  name: glue-vispy-viewers
-  version: {{version}}
+  name: {{ name }}
+  version: {{ version }}
 
 source:
-  fn: glue-vispy-viewers-{{version}}.tar.gz
-  url: https://pypi.io/packages/source/g/glue-vispy-viewers/glue-vispy-viewers-{{version}}.tar.gz
-  sha256: 9d126735b1c1b08a56e02e11d0eba20c040ff934c8d1fd6644e7ee085a420569
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace("-", "_") }}-{{version}}.tar.gz
+  sha256: 72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545
 
 build:
-  number: 1
-  # Skipping unnecessary linux platforms that don't need viz.
-  skip: True  # [py<36 or ppc64le or s390x]
+  number: 0
+  skip: True  # [py<310]
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   host:
+    - pip
     - python
     - setuptools
     - setuptools_scm
-    - wheel
-    - pip
   run:
     - python
     - numpy
     - pyopengl
-    - glue-core >=1.0
-    - matplotlib-base
-    - qtpy
+    - glue-core >=1.13.1
+    - echo >=0.6
     - scipy
-    - astropy >=4.0
-    - pillow
-    - vispy >=0.6
-    - pyqt >=5.9,<6.0a0
+    - matplotlib-base
+    - vispy >=0.12.0
+    - importlib-metadata
+    - glfw
+    - imageio
+    - jupyter-rfb
 
 test:
+  # glue-vispy-viewers 1.2.3 requires glfw, which is not installed.
   imports:
     - glue_vispy_viewers
     - glue_vispy_viewers.scatter
     - glue_vispy_viewers.volume
-  commands:
-    - pip check
-  requires:
-    - pip
 
 about:
   home:  https://glueviz.org
