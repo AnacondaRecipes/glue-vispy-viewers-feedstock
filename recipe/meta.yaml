@@ -1,5 +1,5 @@
 {% set name = "glue-vispy-viewers" %}
-{% set version = "1.2.3" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace("-", "_") }}-{{version}}.tar.gz
-  sha256: 72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545
+  sha256: aa9bc2b11d851ac1c12d953d4637b48b6eff9449f54715c92e654c38407af54a
 
 build:
   number: 0
-  skip: True  # [py<310]
+  skip: true  # [py<310]
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -42,7 +42,7 @@ test:
     - glue_vispy_viewers.volume
 
 about:
-  home:  https://glueviz.org
+  home: https://glueviz.org
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
