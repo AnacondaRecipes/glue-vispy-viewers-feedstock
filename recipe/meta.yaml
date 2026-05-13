@@ -35,7 +35,7 @@ requirements:
     - jupyter-rfb
 
 test:
-  # glue-vispy-viewers 1.2.3 requires glfw, which is not installed.
+  # glue-vispy-viewers: glfw-backed imports; keep smoke tests only.
   imports:
     - glue_vispy_viewers
     - glue_vispy_viewers.scatter
