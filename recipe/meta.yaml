@@ -1,5 +1,5 @@
 {% set name = "glue-vispy-viewers" %}
-{% set version = "1.2.3" %}
+{% set version = "1.4.0" %}
 
 package:
   name: {{ name }}
@@ -7,39 +7,46 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace("-", "_") }}-{{version}}.tar.gz
-  sha256: 72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545
+  sha256: aa9bc2b11d851ac1c12d953d4637b48b6eff9449f54715c92e654c38407af54a
 
 build:
   number: 0
-  skip: True  # [py<310]
   script: pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
+  skip: true  # [py<310]
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
+    - wheel
+    - setuptools >=30.3
     - setuptools_scm
   run:
     - python
     - numpy
     - pyopengl
-    - glue-core >=1.13.1
-    - echo >=0.6
+    - glue-core >=1.25.0
+    - echo >=0.12.1
     - scipy
     - matplotlib-base
-    - vispy >=0.12.0
-    - importlib-metadata
-    - glfw
+    - vispy >=0.14.0
+    - pyglfw
     - imageio
-    - jupyter-rfb
+  run_constrained:
+    # pyqt and pyside
+    - glue-qt >=0.4.0
 
 test:
-  # glue-vispy-viewers 1.2.3 requires glfw, which is not installed.
   imports:
     - glue_vispy_viewers
     - glue_vispy_viewers.scatter
     - glue_vispy_viewers.volume
+  commands:
+    - pip check
+    - pytest -v --pyargs glue_vispy_viewers
+  requires:
+    - pip
+    - pytest
 
 about:
   home:  https://glueviz.org
